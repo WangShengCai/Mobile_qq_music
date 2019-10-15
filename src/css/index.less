@@ -1,0 +1,232 @@
+* {
+    margin    : 0;
+    padding   : 0;
+    list-style: none;
+}
+
+body {
+    font-size          : 12px;
+    background-repeat  : no-repeat;
+    background-size    : 100% 100%;
+    background-position: center center;
+
+    .wrapper {
+        position        : relative;
+        width           : 100vw;
+        height          : 100vh;
+        padding-top     : 60px;
+        box-sizing      : border-box;
+        background-color: rgba(0, 0, 0, 0.2);
+
+        .song-img {
+            position: relative;
+            top     : 10px;
+            // 自适应正方形
+            width      : 60%;
+            height     : 0;
+            padding-bottom: 60%;
+            // padding-top: 60%;
+            margin     : 0 auto;
+            // border:1px solid black;
+
+            .img-box {
+                position        : absolute;
+                left            : 0;
+                top             : 0;
+                right           : 0;
+                bottom          : 0;
+                border-radius   : 50%;
+                background-color: #000;
+                display         : flex;
+                justify-content : center;
+                align-items     : center;
+
+                img {
+                    width        : 75%;
+                    height       : 75%;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .song-info {
+            margin-top: 50px;
+            width     : 100%;
+            text-align: center;
+            height    : 126px;
+            color     : #fff;
+            // border:1px solid black;
+
+            .song-name {
+                font-size    : 24px;
+                line-height  : 36px;
+                margin-bottom: 8px;
+            }
+
+            .singer-name {
+                font-size  : 16px;
+                line-height: 20px;
+            }
+
+            .album-name {
+                font-size  : 12px;
+                line-height: 30px;
+            }
+        }
+
+        .progress {
+            margin : 25px 0;
+            display: flex;
+
+            .cur-time,.all-time {
+                width      : 60px;
+                height     : 40px;
+                color      : #fff;
+                text-align : center;
+                line-height: 40px;
+            }
+
+            .pro-time {
+                flex    : 1 1 auto;
+                position: relative;
+                overflow: hidden;
+                padding : 0 3px;
+                // border:1px solid black;
+
+                .pro-bottom,.pro-top {
+                    position: absolute;
+                    top     : 20px;
+                    height  : 2px;
+                    width   : 100%;
+                }
+
+                .pro-bottom {
+                    background-color: rgba(255, 255, 255, .6);
+                }
+
+                .pro-top {
+                    position        : relative;
+                    background-color: #f40;
+                    transform       : translateX(-100%);
+
+                    .slider {
+                        width              : 20px;
+                        height             : 20px;
+                        position           : absolute;
+                        // background-color:green;
+                        right              : -10px;
+                        top                : -9px;
+                        display            : flex;
+                        justify-content    : center;
+                        align-items        : center;
+
+                        &::after {
+                            content         : '';
+                            display         : flex;
+                            width           : 7px;
+                            height          : 7px;
+                            background-color: #fff;
+                            border-radius   : 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .control {
+        width           : 100%;
+        height          : 70px;
+        position        : absolute;
+        bottom          : 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        display         : flex;
+
+        .btn {
+            flex               : 1 1 auto;
+            width              : 20%;
+            height             : 100%;
+            // border          :1px solid black;
+            background-repeat  : no-repeat;
+            background-size    : 20px 20px;
+            background-position: center center;
+        }
+
+        .like {
+            background-image: url('../image/icon-like.png');
+            // 喜欢和不喜欢
+            &.liking {
+                background-image: url('../image/icon-like-solid.png');
+            }
+        }
+
+        .prev {
+            background-image: url('../image/icon-prev.png');
+        }
+
+        .play {
+            background-image: url('../image/icon-play.png');
+            // 播放还是暂停
+            &.playing {
+                background-image: url('../image/icon-pause.png');
+            }
+        }
+
+        .next {
+            background-image: url('../image/icon-next.png');
+        }
+
+        .list {
+            background-image: url('../image/icon-list.png');
+        }
+    }
+}
+
+.play-list {
+    position        : fixed;
+    bottom          : 0;
+    background-color: #fff;
+    width           : 100%;
+    transform       : translateY(100%);
+    transition      : transform 260ms ease-out;
+
+    &.show {
+        transform: translateY(0);
+    }
+
+    .play-header,.close-btn {
+        height     : 50px;
+        line-height: 50px;
+        text-align : center;
+        font-size  : 16px;
+    }
+
+    .close-btn {
+        border-top: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    .list-wrapper li {
+        padding    : 10px;
+        height     : 20px;
+        line-height: 20px;
+        border-top : 1px solid rgba(0, 0, 0, .1);
+
+        h3 {
+            font-size: 14px;
+
+            span {
+                font-size: 12px;
+            }
+        }
+        // 添加一个样式类名
+        &.sign {
+            h3 {
+                color: red;
+
+                span {
+                    color: red;
+                }
+            }
+        }
+    }
+}
